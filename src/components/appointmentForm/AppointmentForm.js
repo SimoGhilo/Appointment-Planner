@@ -11,6 +11,7 @@ export const AppointmentForm = (props) => {
   const time = props.time;
   const setTime = props.setTime;
   const handleSubmit = props.handleSubmit;
+  const contact = props.contacts;
 
   const getTodayString = () => {
     const [month, day, year] = new Date()
@@ -19,17 +20,17 @@ export const AppointmentForm = (props) => {
     return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
   };
 
-  const handleChange = () => {
-
-  }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={title} onChange={setTitle} />
-      <input type="date" value={date} onChange={setDate} />
-      <input type="time" value={time} onChange={setTime} />
-      <ContactPicker onChange={handleChange} />
-      <button onClick={handleSubmit}>Submit</button>
+      <label>Title</label>
+      <input type="text" value={title} onChange={(e) => props.setTitle(e.target.value)} />
+      <label>Date</label>
+      <input type="date" min={getTodayString()} value={date} onChange={(e) => props.setDate(e.target.value)} />
+      <label>Time</label>
+      <input type="time" value={time} onChange={(e) => props.setTime(e.target.value)} />
+      <ContactPicker contact={contact} />
+      <button type="Submit">Submit</button>
     </form>
   );
 };

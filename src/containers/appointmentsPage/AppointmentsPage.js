@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import App from "../../App";
-import AppointmentForm from "../../components/appointmentForm/AppointmentForm";
+import { AppointmentForm } from "../../components/appointmentForm/AppointmentForm";
+import { TileList } from "../../components/tileList/TileList";
 export const AppointmentsPage = (props) => {
 
   const appointments = props.appointments;
   const contacts = props.contacts;
-  const addAppointments = props.onAdd;
+  const addAppointments = props.addAppointment;
 
   const [currentTitle, setCurrentTitle] = useState("");
   const [contact, setContact] = useState("");
@@ -14,12 +15,7 @@ export const AppointmentsPage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addAppointments({
-      title: currentTitle,
-      contact: contact,
-      date: date,
-      time: time,
-    });
+    addAppointments((currentTitle, contact, date, time));
     setCurrentTitle("");
     setContact("");
     setDate("");
@@ -28,14 +24,16 @@ export const AppointmentsPage = (props) => {
 
   return (
     <div>
-      <section currentTitle={currentTitle} contact={contact} date={date} time={time}
-        setCurrentTitle={setCurrentTitle} setContact={setContact} setDate={setDate} setTime={setTime}
-        handleSubmit={handleSubmit}>
+      <section>
         <h2>Add Appointment</h2>
+        <AppointmentForm currentTitle={currentTitle} contact={contact} date={date} time={time}
+          setCurrentTitle={setCurrentTitle} setContact={setContact} setDate={setDate} setTime={setTime}
+          handleSubmit={handleSubmit} />
       </section>
       <hr />
-      <section tileList={appointments}>
+      <section>
         <h2>Appointments</h2>
+        <TileList appointments={appointments} />
       </section>
     </div>
   );

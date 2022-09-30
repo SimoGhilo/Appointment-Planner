@@ -1,17 +1,17 @@
 import React from "react";
 import { Tile } from "../tile/Tile"
-import { ContactsPage } from "../../containers/contactsPage/ContactsPage";
-import { AppointmentsPage } from "../../containers/appointmentsPage/AppointmentsPage";
+
 
 
 export const TileList = (props) => {
 
-  const tileList = props.tileList;
+  const tileList = props.contacts;
+
   return (
     <div className="tile-list">
-      {tileList.map((tile, index) => {
-        <Tile value={tile} key={index} />
-      })
+      {tileList.map((tile, index) =>
+        <Tile contact={tile} key={index} />
+      )
       }</div>)
 
 };

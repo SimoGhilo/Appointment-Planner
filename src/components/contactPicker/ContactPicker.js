@@ -1,10 +1,12 @@
 import React from "react";
 import App from "../../App";
+import { AppointmentForm } from "../appointmentForm/AppointmentForm";
 
 export const ContactPicker = (props) => {
 
-  const contacts = props.contacts;
+  const contacts = props.contact;
   const handleChange = props.handleChange;
+
 
   return (
     <select onChange={handleChange}>
