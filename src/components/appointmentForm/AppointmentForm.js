@@ -11,7 +11,9 @@ export const AppointmentForm = (props) => {
   const time = props.time;
   const setTime = props.setTime;
   const handleSubmit = props.handleSubmit;
-  const contact = props.contacts;
+  const contacts = props.contacts;
+  const contact = props.contact;
+  const setContact = props.setContact;
 
   const getTodayString = () => {
     const [month, day, year] = new Date()
@@ -29,7 +31,9 @@ export const AppointmentForm = (props) => {
       <input type="date" min={getTodayString()} value={date} onChange={(e) => props.setDate(e.target.value)} />
       <label>Time</label>
       <input type="time" value={time} onChange={(e) => props.setTime(e.target.value)} />
-      <ContactPicker contact={contact} />
+      <ContactPicker contacts={contacts}
+        value={contact}
+        onChange={(e) => setContact(e.target.value)} />
       <button type="Submit">Submit</button>
     </form>
   );

@@ -26,7 +26,7 @@ export const AppointmentsPage = (props) => {
     <div>
       <section>
         <h2>Add Appointment</h2>
-        <AppointmentForm currentTitle={currentTitle} contact={contact} date={date} time={time}
+        <AppointmentForm currentTitle={currentTitle} contacts={contacts} contact={contact} date={date} time={time}
           setCurrentTitle={setCurrentTitle} setContact={setContact} setDate={setDate} setTime={setTime}
           handleSubmit={handleSubmit} />
       </section>
